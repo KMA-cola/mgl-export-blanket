@@ -1,0 +1,13 @@
+Main URLs
+
+/ – Home (Hero + 3 featured blankets + CTA)
+
+/products – All blankets (up to 10 types)
+
+/product/<int:id> – Single blanket detail page
+
+/order – Order form (name, phone, address, selected product)
+
+/about – Short “Why MGL Blanket” (optional)
+
+/admin – existing admin panel (already have)

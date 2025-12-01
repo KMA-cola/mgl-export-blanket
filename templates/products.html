@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}MGL Blanket - စောင်အမျိုးအစားများ{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-3">စောင်အမျိုးအစား ၁၀ မျိုး</h2>
+  <p class="text-muted mb-4" style="max-width:600px;">
+    အောက်ပါစောင်တွေကို retail / wholesale နှစ်မျိုးစလုံး ရောင်းချနေပါတယ်။
+    စုံစမ်းမေးမြန်းချင်ရင် အောက်ခြေမှာ Viber / Telegram လိပ်စာတွေပါပါတယ်။
+  </p>
+
+  <div class="row g-3">
+    {% for product in products %}
+    <div class="col-6 col-md-4 col-lg-3">
+      <div class="card product-card h-100 shadow-sm">
+        <img src="{{ url_for('static', filename='images/' ~ product.image) }}"
+             class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body p-2 d-flex flex-column">
+          <div class="fw-bold small">{{ product.name_mm }}</div>
+          <div class="text-muted small flex-grow-1">{{ product.short_desc_mm }}</div>
+          <div class="mt-1 fw-semibold">
+            {{ "{:,.0f}".format(product.price) }} ကျပ်
+          </div>
+          <div class="mt-2 d-flex gap-1">
+            <a href="{{ url_for('product_detail', product_id=product.id) }}"
+               class="btn btn-sm btn-outline-secondary flex-fill">အသေးစိတ်</a>
+            <a href="{{ url_for('order_page', product_id=product.id) }}"
+               class="btn btn-sm btn-primary flex-fill">မှာမယ်</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

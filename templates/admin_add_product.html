@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Add Product – Admin{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-3">Admin – ကုန်ပစ္စည်း အသစ် ထည့်မယ်</h2>
+  <p class="text-muted">
+    ဒီ page ကို နောက်ပိုင်းမှာ real form ထည့်မယ်။ အခုတော့
+    BuildError မဖြစ်အောင် အသေးစိတ် UI မပါသေးဘူး။
+  </p>
+
+  <a href="{{ url_for('admin_products') }}" class="btn btn-secondary">
+    ← Admin Product List သို့ ပြန်သွားမယ်
+  </a>
+</div>
+{% endblock %}

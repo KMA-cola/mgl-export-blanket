@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ product.name_mm }} - MGL Blanket{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row g-4">
+    <div class="col-md-5">
+      <img src="{{ url_for('static', filename='images/' ~ product.image) }}"
+           alt="{{ product.name_mm }}" class="img-fluid rounded shadow-sm">
+    </div>
+    <div class="col-md-7">
+      <h2>{{ product.name_mm }}</h2>
+      <div class="text-muted mb-2">{{ product.name_en }}</div>
+
+      <div class="mb-3">
+        <span class="h4 text-primary">
+          {{ "{:,.0f}".format(product.price) }} ကျပ်
+        </span>
+        <span class="text-muted">/ တစ်ထည်</span>
+      </div>
+
+      <p>{{ product.desc_mm }}</p>
+
+      <ul class="small text-muted">
+        <li>အရွယ်အစား – {{ product.size or "60\" x 80\" (အလယ်ပုံ)" }}</li>
+        <li>အလေးချိန် – {{ product.weight or "2.5–4 kg (အမျိုးအစားအလိုက်)" }}</li>
+        <li>အသားအရေ – Eco-fleece / Velvet / Rabbit Fur</li>
+        <li>အရောင် – {{ product.colors or "Blue / Grey / Pink / Coffee" }}</li>
+      </ul>
+
+      <div class="mt-3 d-flex gap-2 flex-wrap">
+        <a href="{{ url_for('order_page', product_id=product.id) }}"
+           class="btn btn-primary">
+          ဒီစောင်ကို အွန်လိုင်းမှာမှာမယ်
+        </a>
+        <a href="viber://chat?number=959XXXXXXXX"
+           class="btn btn-outline-secondary">
+          Viber နဲ့မေးမယ်
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

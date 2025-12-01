@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}MGL Blanket - Home{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+  <!-- Top bar: title + admin login -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+      <h2 class="mb-0">MGL Blanket Online Catalog</h2>
+      <small class="text-muted">
+        မင်္ဂလား Export Blanket / Garment Outlet အတွက် Online စာရင်း
+      </small>
+    </div>
+
+    <!-- Admin Login Button -->
+    <div>
+      <a href="{{ url_for('admin_login') }}" class="btn btn-dark btn-sm">
+        Admin Login
+      </a>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Flash messages -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="mt-2">
+        {% for msg in messages %}
+          <div class="alert alert-info py-2 my-1">{{ msg }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+  <!-- Featured products section -->
+  <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+    <h4 class="mb-0">Featured Blankets</h4>
+    <a href="{{ url_for('products') }}" class="btn btn-outline-primary btn-sm">
+      အన్నిစောင်လုံးကြည့်မယ်
+    </a>
+  </div>
+
+  {% if featured_products %}
+    <div class="row g-3 mt-1">
+      {% for p in featured_products %}
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm h-100">
+            <img src="{{ url_for('static', filename='images/' ~ p['image']) }}"
+                  class="card-img-top" alt="{{ p['name_en'] }}">
+            <div class="card-body p-2 d-flex flex-column">
+              <div class="fw-bold small">{{ p['name_mm'] }}</div>
+              <div class="text-muted small flex-grow-1">
+                {{ p['short_desc_mm'] }}
+              </div>
+              <div class="mt-1 fw-semibold">
+                {{ "{:,.0f}".format(p['price']) }} ကျပ်
+              </div>
+              <div class="mt-2 d-flex gap-1">
+                <a href="{{ url_for('product_detail', product_id=p['id']) }}"
+                   class="btn btn-sm btn-outline-secondary flex-fill">
+                  အသေးစိတ်
+                </a>
+                <a href="{{ url_for('order_page', product_id=p['id']) }}"
+                   class="btn btn-sm btn-primary flex-fill">
+                  မှာမယ်
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="text-muted mt-3">
+      Database ထဲမှာ စောင် product မရှိသေးပါ။
+      Admin Panel ကနေ ထည့်ပေးရပါမယ်။
+    </p>
+  {% endif %}
+
+</div>
+{% endblock %}

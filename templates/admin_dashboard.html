@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h3>Admin Panel</h3>
+    <hr>
+
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action"
+           href="{{ url_for('admin_products') }}">🧾 Manage Products</a>
+
+        <a class="list-group-item list-group-item-action"
+           href="{{ url_for('admin_orders') }}">📦 View Orders</a>
+
+        <a class="list-group-item list-group-item-action text-danger"
+           href="{{ url_for('admin_logout') }}">Logout</a>
+    </div>
+</div>
+{% endblock %}

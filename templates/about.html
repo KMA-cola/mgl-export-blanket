@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}MGL Blanket - About{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h2 class="mb-3">MGL Export Blanket အကြောင်း</h2>
+
+  <p class="lead">
+    MGL Export Blanket က မြန်မာနိုင်ငံရောင်းချဖို့အတွက် ထိုင်မှာထုတ်လုပ်ထားတဲ့
+    polar fleece, rabbit fur, coudery velvet စတာတွေကို
+    retail / wholesale နှစ်မျိုးလုံး ပံ့ပိုးပေးနေတဲ့ project လေးပါ။
+  </p>
+
+  <p>
+    ဒီ web app လေးကတော့ စောင်အမျိုးအစား ၁၀ မျိုးကို online catalogue လိုမျိုး
+    လက်လှမ်းမီမြင်ရအောင် ဖန်တီးထားတာပါ။ နောက်ပိုင်းမှာလည်း
+    order list, wholesale price list, delivery tracking စတာတွေ ထပ်တိုးထည့်သွားမယ်လို့
+    စိန်ခေါ်ထားပါတယ်။
+  </p>
+
+  <p>
+    စိတ်ဝင်စားတဲ့ မိတ်ဆွေတွေက Viber / Telegram ကနေ စုံစမ်းမေးမြန်းနိုင်ပါတယ်။ 😊
+  </p>
+
+  <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">
+    စောင် Catalog ကို ပြန်သွားမယ်
+  </a>
+</div>
+{% endblock %}
